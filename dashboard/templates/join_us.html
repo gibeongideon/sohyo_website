@@ -1,0 +1,276 @@
+{% extends 'layouts/base.html' %}
+{% block title %} Join Us {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<main>
+
+    <div class="slider-area2">
+    <div class="slider-height2 d-flex align-items-center">
+    <div class="container">
+    <div class="row">
+    <div class="col-xl-12">
+    <div class="hero-cap hero-cap2 pt-20 text-center">
+    <h2>Register Below to see Sohyo Team and become a Member</h2>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    
+    <section class="contact-section">
+    <div class="container">
+    <div class="d-none d-sm-block mb-5 pb-4">
+ 
+    </div>
+    <div class="row">
+    <div class="col-12">
+    <h2 class="contact-title">Register To Become a Member</h2>
+    </div>
+    <div class="col-lg-8">
+
+
+            <form class="form-contact contact_form" action="" method="post" id="contactForm">
+        {% csrf_token %} 
+        <div class="row">
+        
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input class="form-control valid" name="username" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter username'" placeholder="Username">
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input class="form-control valid" name="first_name" id="first_name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter first_name'" placeholder="First_name">
+                </div>
+            </div>
+            
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input class="form-control valid" name="last_name" id="last_name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter last_name'" placeholder="Last_name">
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-group">
+                    <input class="form-control" name="phone_number" id="phone_number" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'phone_number'" placeholder="phone_number">
+                    
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email">
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                Member Type:
+                <div class="form-group">
+                    {{form.member_type}} 
+                </div>
+            </div>          
+
+
+
+            <!-- <div class="col-12">
+                <div class="form-group">
+                    <input class="form-control" name="password1" id="password1" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'password1'" placeholder="password">
+                    
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-group">
+                    <input class="form-control" name="password2" id="password2" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm password'" placeholder="Confirm password">
+                    
+                </div>
+            </div> -->
+        <div class="form-group mt-3">
+            <button type="submit" name="join_us" class="button button-contactForm boxed-btn">Send</button>
+        </div>
+    </form>
+
+
+
+    </div>
+
+  
+    </div>
+    </div>
+    </div>
+    </section>
+    
+    </main>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+<script>
+    $(document).ready(
+        function(){
+            (function($){
+                "use strict";jQuery.validator.addMethod(
+                    'answercheck',function(value,element){
+                        return this.optional(element)||/^\bcat\b$/.test(value)},
+                    "type the correct answer -_-");
+                    $(function(){
+                        $('#contactForm').validate(
+                            {
+                                rules:{
+                                    username:{
+                                        required:true,
+                                        minlength:2},
+
+                                    first_name:{
+                                        required:true,
+                                        minlength:3}, 
+
+                                    last_name:{
+                                        required:true,
+                                        minlength:3},
+
+
+
+                                    phone_number:{
+                                        required:true,
+                                        minlength:10},
+                                    email:{
+                                            required:true,
+                                            email:true},
+
+                                    password1:{
+                                        required:true,
+                                        minlength:5},
+
+                                    password2:{
+                                        required:true,
+                                        minlength:5,
+                                         }
+                                    },
+
+                                messages:{
+                                    username:{
+                                        required:"Come on, you have a name, don't you? nicname is fine!",
+                                        minlength:"Your name must consist of at least 2 characters"},
+
+                                    first_name:{
+                                        required:"Your first name needed ...just fill it",
+                                        minlength:"Too short,never heard of such name, ha !"},
+
+                                    last_name:{
+                                        required:"We are happy to have your second name  ...please fill",
+                                        minlength:"Too short!"},
+
+                                    password1:{
+                                        required:"Password needed",
+                                        minlength:"Too short password!"},
+
+                                    phone_number:{
+                                        required:"Come on, you have a number, don't you?",
+                                        minlength:"Your number dont seem fine..check check "},
+                                        
+                                    email:{
+                                        required:"No email, No message"},
+
+                                    password2:{
+                                            required:"Repeat password to confirm",
+                                            minlength:"Doen't seem correct.Too short.I am checking!"}
+
+                                    },
+
+                                submitHandler:function(form){
+                                        $(form).ajaxSubmit(
+                                            {
+                                                type:"POST",
+                                                data:$(form).serialize(),
+                                                url:"{% url 'dashboard:join_us' %}",
+                                                success:function(){
+                                                    alert('Congrats! Successfully Joined Sohyo!');
+                                                    $('#contactForm :input').attr('disabled','disabled');
+                                                    $('#contactForm').fadeTo(
+                                                        "slow",1,
+                                                        function(){
+                                                            $(this).find(':input').attr('disabled','disabled');
+                                                            $(this).find('label').css('cursor','default');
+                                                            $('#success').fadeIn();
+                                                            $('.modal').modal('hide');
+                                                            $('#success').modal('show');
+                                                        }
+                                                    )},
+                                                    
+                                                error:function(){
+                                                    alert('Data Failed to be Posted');
+                                                    $('#contactForm').fadeTo(
+                                                        "slow",1,
+                                                        function(){
+                                                            $('#error').fadeIn();
+                                                            $('.modal').modal('hide');
+                                                            $('#error').modal('show');
+                                                        }
+                                                    )
+                                                }
+                                            }
+                                        )
+                                }
+                            }
+                        )
+                    }
+                )
+            }
+         )(jQuery)            
+        }
+    )
+
+
+
+</script>
+
+{% endblock javascripts %}
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+    <form role="form" method="post" action="{% url 'dashboard:join_us' %}">
+              
+        {% csrf_token %} 
+
+        {% for field in form %}
+        <p>
+
+          {% if field.help_text %}
+          <span class="help-block text-muted">
+            <small>{{ field.help_text }}</small>
+          </span>
+          {% endif %}
+          {{field.label}}
+          {{ field }}
+      
+
+        {% if field.errors %}
+        <span class="text-danger">{{ field.errors|join:'<br />' }}</span>
+        {% endif %}
+
+        </p>
+
+      {% endfor %}
+
+      <button type="submit" name="join_us" class="btn btn-fill btn-primary">Register</button>
+
+
+    </form>     -->

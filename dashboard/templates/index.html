@@ -1,0 +1,445 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Home  {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<main>
+
+  <div class="slider-area">
+  <div class="slider-active">
+  
+  <div class="single-slider slider-height d-flex align-items-center">
+  <div class="container">
+  <div class="row">
+  <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10">
+  <div class="hero__caption">
+  <h1 data-animation="fadeInUp" data-delay=".6s">{{main.titleup}}<br> {{main.titledown}} </h1>
+  <P data-animation="fadeInUp" data-delay=".8s">{{main.small_description}} </P>
+  
+  <div class="hero__btn">
+  <a href="{% url 'dashboard:contact' %}" class="btn hero-btn mb-10" data-animation="fadeInLeft" data-delay=".8s">{{main.donate}}</a>
+  <a href="{% url 'dashboard:contact' %}" class="cal-btn ml-15" data-animation="fadeInRight" data-delay="1.0s">
+  <i class="flaticon-null"></i>
+  <p>{{main.mobile_no}} </p>
+  </a>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  </div>
+  </div>
+  
+  
+  <div class="service-area section-padding30">
+  <div class="container">
+  <div class="row justify-content-center">
+  <div class="col-xl-6 col-lg-7 col-md-10 col-sm-10">
+  
+  <div class="section-tittle text-center mb-80">
+  <span>What we are doing</span>
+  <h2> {{main.what_we_are_doing}}</h2>
+  </div>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-lg-4 col-md-6 col-sm-6">
+  <div class="single-cat text-center mb-50">
+  <div class="cat-icon">
+   <span class="flaticon-null-1"></span>
+  </div>
+  <div class="cat-cap">
+  <h5><a href="services.html">{{main.mission1}}</a></h5>
+  <p>{{main.mission1_desc}} </p>
+  </div>
+  </div>
+  </div>
+
+  <div class="col-lg-4 col-md-6 col-sm-6">
+  <div class="single-cat active text-center mb-50">
+  <div class="cat-icon">
+  <span class="flaticon-think"></span>
+  </div>
+  <div class="cat-cap">
+  <h5><a href="services.html">{{main.mission2}}</a></h5>
+  <p>{{main.mission2_desc}}</p>
+  </div>
+  </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-6">
+  <div class="single-cat text-center mb-50">
+  <div class="cat-icon">
+  <span class="flaticon-gear"></span>
+  </div>
+  <div class="cat-cap">
+  <h5><a href="services.html">{{main.mission4}}</a></h5>
+  <p>{{main.mission4_desc}}</p>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  
+  
+  <section class="about-low-area section-padding2">
+  <div class="container">
+  <div class="row">
+  <div class="col-lg-6 col-md-10">
+  <div class="about-caption mb-50">
+  
+  <div class="section-tittle mb-35">
+  <span>{{main.about_our_foundation_header}} </span>
+  <h2>{{main.about_our_foundation_sub_header}} </h2>
+  </div>
+  <p>{{main.about_our_foundation_desc1}} </p>
+  <p>{{main.about_our_foundation_desc2}} </p>
+  </div>
+  <a href="{% url 'dashboard:about' %}" class="btn">About Us</a>
+  </div>
+  <div class="col-lg-6 col-md-12">
+  
+  <div class="about-img ">
+  <div class="about-font-img d-none d-lg-block">
+  <img src={{main.about2_image.url}} alt="">  
+  <!-- <img src="/static/assets/img/gallery/about2.png" alt=""> -->
+  </div>
+  <div class="about-back-img ">
+  <img src={{main.about1_image.url}} alt="">
+  <!-- <img src="/static/assets/img/gallery/about1.png" alt=""> -->
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </section>
+  
+  
+  <div class="our-cases-area section-padding30">
+  <div class="container">
+  <div class="row justify-content-center">
+  <div class="col-xl-6 col-lg-7 col-md-10 col-sm-10">
+  
+  <div class="section-tittle text-center mb-80">
+  <span>Our Cases you can see</span>
+  <h2>{{main.exlore_causes}} </h2>
+  </div>
+  </div>
+  </div>
+  <div class="row">
+    {% for couse in couses%}
+
+    <div class="col-lg-4 col-md-6 col-sm-6">
+      <div class="single-cases mb-40">
+        <div class="cases-img">
+          <!-- <img src="/static/assets/img/gallery/case2.png" alt=""> -->
+          <img src={{couse.image.url}} alt="">
+        </div>
+        <div class="cases-caption">
+          <h3><a href="#">{{couse.description}} </a></h3>
+           <div class="single-skill mb-15">
+             <div class="bar-progress">
+               <div id="bar1" class="barfiller">
+                 <div class="tipWrap">
+                   <span class="tip"></span>
+                 </div>
+                 <span class="fill" data-percentage={{couse.donation_prog}}></span>
+               </div>
+             </div>
+          </div>
+          <div class="prices d-flex justify-content-between">
+            <p>Raised:<span> ${{couse.raised}}</span></p>
+            <p>Goal:<span> ${{couse.goal}}</span></p>
+            </div>
+         </div>
+      </div>
+    </div>
+    {% endfor %}
+
+
+  </div>
+
+  </div>
+  </div>
+  
+  
+  <section class="featured-job-area section-padding30 section-bg2" data-background="/static/assets/img/gallery/section_bg03.png">
+  <div class="container">
+  <div class="row justify-content-center">
+  <div class="col-xl-7 col-lg-9 col-md-10 col-sm-12">
+  
+  <div class="section-tittle text-center mb-80">
+  <span>What we are doing</span>
+  <h2>{{main.events_plans}} </h2>
+  </div>
+  </div>
+  </div>
+  <div class="row justify-content-center">
+
+    {% for event in events%}
+  <div class="col-lg-9 col-md-12">
+  
+  <div class="single-job-items mb-30">
+  <div class="job-items">
+  <div class="company-img">
+  <!-- <a href="#"><img src="/static/assets/img/gallery/socialEvents1.png" alt=""></a> -->
+  <a href="#"><img src={{event.image.url}} alt=""></a>
+  </div>
+  <div class="job-tittle">
+  <a href="#"><h4>{{event.description}}</h4></a>
+  <ul>
+  <li><i class="far fa-clock"></i>{{event.startime}} - {{event.endtime}}</li>
+  <li><i class="fas fa-sort-amount-down"></i>{{event.date}}</li>
+  <li><i class="fas fa-map-marker-alt"></i>{{event.venuetitle}}, {{event.town}}</li>
+  </ul>
+  </div>
+  </div>
+  </div>
+  </div>
+  {% endfor %}
+  <!-- <div class="col-lg-9 col-md-12">
+  
+  <div class="single-job-items mb-30">
+  <div class="job-items">
+  <div class="company-img">
+  <a href="#"><img src="/static/assets/img/gallery/socialEvents2.png" alt=""></a>
+  </div>
+  <div class="job-tittle">
+  <a href="#"><h4>A hand for Children</h4></a>
+  <ul>
+  <li><i class="far fa-clock"></i>8:30 - 9:30am</li>
+  <li><i class="fas fa-sort-amount-down"></i>18.01.2021</li>
+  <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+  </ul>
+  </div>
+  </div>
+  </div>
+  </div>
+  <div class="col-lg-9 col-md-12">
+  
+  <div class="single-job-items mb-30">
+  <div class="job-items">
+  <div class="company-img">
+  <a href="#"><img src="/static/assets/img/gallery/socialEvents3.png" alt=""></a>
+  </div>
+  <div class="job-tittle">
+  <a href="#"><h4>Help for Children</h4></a>
+  <ul>
+  <li><i class="far fa-clock"></i>8:30 - 9:30am</li>
+  <li><i class="fas fa-sort-amount-down"></i>18.01.2021</li>
+  <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+  </ul>
+  </div>
+  </div>
+  </div>
+  </div> -->
+  </div>
+  </div>
+  </section>
+  
+  
+  <div class="team-area pt-160 pb-160">
+  <div class="container">
+  <div class="row justify-content-center">
+  <div class="col-xl-6 col-lg-7 col-md-10 col-sm-10">
+  
+  <div class="section-tittle section-tittle2 text-center mb-70">
+  <span>What we are doing</span>
+  <h2>Our Expert Volunteer Always ready</h2>
+  </div>
+  </div>
+  </div>
+  <div class="row">
+    
+    
+    {% for volunteer in volunteers%}
+
+
+  <div class="col-lg-3 col-md-6 col-sm-6">
+  <div class="single-team mb-30">
+  <div class="team-img">
+  <img src={{volunteer.image.url}} alt="">
+  
+  <ul class="team-social">
+  <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+  <li><a href="#"><i class="fas fa-globe"></i></a></li>
+  </ul>
+  </div>
+  <div class="team-caption">
+  <h3><a href="#">{{volunteer.name}} </a></h3>
+  <p>{{volunteer.title}}</p>
+  </div>
+  </div>
+  </div>
+  {% endfor %}
+
+
+
+  </div>
+  </div>
+  </div>
+  
+  
+  <section class="wantToWork-area ">
+  <div class="container">
+  <div class="wants-wrapper w-padding2  section-bg" data-background="/static/assets/img/gallery/section_bg01.png">    
+  <div class="row align-items-center justify-content-between">
+  <div class="col-xl-5 col-lg-9 col-md-8">
+  <div class="wantToWork-caption wantToWork-caption2">
+  <h2>{{main.change}} </h2>
+  </div>
+  </div>
+  <div class="col-xl-2 col-lg-3 col-md-4">
+  <a href="{% url 'dashboard:join_us' %}" class="btn white-btn f-right sm-left">Become A Volunteer</a>
+  </div>
+  </div>
+  </div>
+  </div>
+  </section>
+  
+  
+  <div class="testimonial-area testimonial-padding">
+  <div class="container">
+  
+  <div class="row d-flex justify-content-center">
+  <div class="col-xl-8 col-lg-8 col-md-10">
+  <div class="h1-testimonial-active dot-style">
+  
+    {% for testimomial in testimomials%}
+
+  <div class="single-testimonial text-center">
+  <div class="testimonial-caption ">
+  
+  <div class="testimonial-founder">
+  <div class="founder-img mb-40">
+  <img src={{testimomial.image.url}} alt="">
+  <span>{{testimomial.name}}</span>
+  <p>{{testimomial.title}}</p>
+  </div>
+  </div>
+  <div class="testimonial-top-cap">
+  <p>{{testimomial.description}} </p>
+  </div>
+  </div>
+  </div>
+
+  
+  {% endfor %}
+
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  
+  
+  <section class="home-blog-area section-padding30">
+  <div class="container">
+  
+  <div class="row justify-content-center">
+  <div class="col-xl-5 col-lg-6 col-md-9 col-sm-10">
+  <div class="section-tittle text-center mb-90">
+  <span>Our recent blog</span>
+  <h2>Latest News from our recent blog</h2>
+  </div>
+  </div>
+  </div>
+  <div class="row">
+    <h4>Blogs coming soon!</h4>
+
+    
+
+  <!-- <div class="col-xl-6 col-lg-6 col-md-6">
+  <div class="home-blog-single mb-30">
+  <div class="blog-img-cap">
+  <div class="blog-img">
+  <img src="/static/assets/img/gallery/home-blog1.png" alt="">
+  
+  <div class="blog-date text-center">
+  <span>24</span>
+  <p>Now</p>
+  </div>
+  </div>
+  <div class="blog-cap">
+  <p>Creative derector</p>
+  <h3><a href="blog_details.html">Footprints in Time is perfect House in Kurashiki</a></h3>
+  </div>
+  </div>
+  </div>
+  </div> -->
+
+
+  </div>
+  </div>
+  </section>
+  
+  
+  <div class="count-down-area pt-25 section-bg" data-background="/static/assets/img/gallery/section_bg02.png">
+    
+  <div class="container">
+  <div class="row justify-content-center">
+  <div class="col-lg-12 col-md-12">
+  <div class="count-down-wrapper">
+  <div class="row justify-content-between">
+
+  <!-- <div class="col-lg-3 col-md-6 col-sm-6">
+  
+  <div class="single-counter text-center">
+  <span class="counter color-green">6,200</span>
+  <span class="plus">+</span>
+  <p class="color-green">Donation</p>
+  </div>
+  </div>
+
+  <div class="col-lg-3 col-md-6 col-sm-6">
+  
+  <div class="single-counter text-center">
+  <span class="counter color-green">80</span>
+  <span class="plus">+</span>
+  <p class="color-green">Fund Raised</p>
+  </div>
+  </div> -->
+
+<!-- 
+  <div class="col-lg-3 col-md-6 col-sm-6">
+  
+  <div class="single-counter text-center">
+  <span class="counter color-green">256</span>
+  <span class="plus">+</span>
+  <p class="color-green">Donation</p>
+  </div>
+  </div> -->
+  {% for stat in statistics%}
+  <div class="col-lg-3 col-md-6 col-sm-6">
+  
+  <div class="single-counter text-center">
+  <span class="counter color-green">{{stat.value}}</span>
+  <span class="plus">+</span>
+  <p class="color-green">{{stat.type}}</p>
+  </div>
+  </div>
+
+  {% endfor %}
+
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  
+  </main>
+
+
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

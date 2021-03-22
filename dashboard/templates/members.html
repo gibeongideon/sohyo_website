@@ -1,0 +1,86 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Members {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<main>
+
+    <div class="slider-area2">
+    <div class="slider-height2 d-flex align-items-center">
+    <div class="container">
+    <div class="row">
+    <div class="col-xl-12">
+    <div class="hero-cap hero-cap2 pt-20 text-center">
+    <h2>10 Recently Joined</h2>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    
+    <div class="our-cases-area section-padding30">
+    <div class="container">
+    <div class="row">
+
+
+
+        <div class="table-responsive">
+            <table class="table tablesorter " id="">
+              <thead class=" text-primary">
+                <tr>
+                  <th>
+                    Username
+                  </th>
+                  <th>
+                    First Name
+                  </th>
+                  <th>
+                    Last Name
+                  </th>
+                  <th>
+                    Member Type
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for trans in members%}
+  
+                <tr>
+                  <td>
+                    {{trans.username}}
+                  </td>
+                  <td>
+                    {{trans.first_name}}
+                  </td>
+                  <td>
+                    {{trans.last_name}}
+                  </td>
+                  <td>
+                    {{trans.member_type}}
+                  </td>     
+  
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+
+
+
+    </div>
+    </div>
+    </div>    
+
+    </main>         
+  
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}
