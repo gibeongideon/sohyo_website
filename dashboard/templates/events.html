@@ -1,0 +1,57 @@
+{% extends 'layouts/base.html' %}
+{% block title %} Events {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<main>
+
+
+    
+    <section class="featured-job-area section-padding30 section-bg2" data-background="assets/img/gallery/section_bg03.png">
+    <div class="container">
+    <div class="row justify-content-center">
+    <div class="col-xl-7 col-lg-9 col-md-10 col-sm-12">
+    
+    <div class="section-tittle text-center mb-80">
+    <span>What we are doing</span>
+    <h2>{{common.event_header}}</h2>
+    </div>
+    </div>
+    </div>
+    <div class="row justify-content-center">  
+
+    {% for event in events%}
+    <div class="col-lg-9 col-md-12">
+    
+    <div class="single-job-items mb-30">
+    <div class="job-items">
+    <div class="company-img">
+    <!-- <a href="#"><img src="/static/assets/img/gallery/socialEvents1.png" alt=""></a> -->
+    <a href="#"><img src={{event.image.url}} alt=""></a>
+    </div>
+    <div class="job-tittle">
+    <a href="#"><h4>{{event.description}}</h4></a>
+    <ul>
+    <li><i class="far fa-clock"></i>{{event.startime}} - {{event.endtime}}</li>
+    <li><i class="fas fa-sort-amount-down"></i>{{event.date}}</li>
+    <li><i class="fas fa-map-marker-alt"></i>{{event.venuetitle}}, {{event.town}}</li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    {% endfor %}
+
+    </div>
+    </div>
+    </section>
+    
+    </main>
+
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}
