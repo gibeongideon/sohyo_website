@@ -99,16 +99,25 @@ def blogs(request):
 #         return HttpResponse(html_template.render(context, request))    
 
 
-
 def join_us(request):
     common, _= Common.objects.get_or_create(id=1)
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        data = {}
+        data['username'] = request.POST.get('username')
+        data['first_name'] = request.POST.get('first_name')
+        data['last_name'] = request.POST.get("last_name")
+        data['phone_number'] = request.POST.get("phone_number")
+        data['email'] = request.POST.get("email")
+        data['member_type'] = request.POST.get("member_type")
+        data['password1'] = 'qqqqq11111'
+        data['password2'] = 'qqqqq11111'
+
+
+        print(data)
+
+        form = SignUpForm(data=data)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.password1 = 'qqqqq11111!'
-            post.password2 = 'qqqqq11111!'
-            post.save()
+            form.save()
             return redirect('/members')
     else:
         form = SignUpForm()        
