@@ -112,15 +112,12 @@ def join_us(request):
         data['password1'] = 'qqqqq11111'
         data['password2'] = 'qqqqq11111'
 
-
-        print(data)
-
         form = SignUpForm(data=data)
         if form.is_valid():
             form.save()
             return redirect('/members')
     else:
-        form = SignUpForm()        
+        form = SignUpForm()     
 
     return render(request, 'join_us.html', {'form': form, 'common': common, })
 

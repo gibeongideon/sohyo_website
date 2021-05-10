@@ -14,7 +14,7 @@
     <div class="row">
     <div class="col-xl-12">
     <div class="hero-cap hero-cap2 pt-20 text-center">
-    <h2>Register Below to see Sohyo Team and become a Member</h2>
+    <h2>AT ALL WE DO MAY GOD HELP US</h2>
     </div>
     </div>
     </div>
@@ -23,17 +23,12 @@
     </div>
     
     
-    <section class="contact-section">
-    <div class="container">
-    <div class="d-none d-sm-block mb-5 pb-4">
- 
-    </div>
+
     <div class="row">
     <div class="col-12">
-    <h2 class="contact-title">Register To Become a Member</h2>
+    <h2 class="contact-title">Register with us to become a member</h2>
     </div>
     <div class="col-lg-8">
-
 
             <form class="form-contact contact_form" action="" method="post" id="contactForm">
         {% csrf_token %} 
@@ -102,11 +97,7 @@
     </div>
 
   
-    </div>
-    </div>
-    </div>
-    </section>
-    
+       
     </main>
 
 {% endblock content %}
@@ -193,7 +184,7 @@
                                                 data:$(form).serialize(),
                                                 url:"{% url 'dashboard:join_us' %}",
                                                 success:function(){
-                                                    alert('Congrats! Successfully Joined Sohyo!');
+                                                    alert('Thank you for joining us,WE SERVE TO SAVE..');
                                                     $('#contactForm :input').attr('disabled','disabled');
                                                     $('#contactForm').fadeTo(
                                                         "slow",1,
