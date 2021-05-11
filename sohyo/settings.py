@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'sohyo.wsgi.application'
 #     }
 # }
 
-. . .
+
 
 DATABASES = {
     'default': {
@@ -98,7 +98,6 @@ DATABASES = {
     }
 }
 
-. . .
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -147,7 +146,8 @@ MEDIA_URL = '/media/'
 AUTH_USER_MODEL = 'dashboard.User'
 
 
-# Heroku: Update database configuration from $DATABASE_URL.
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# # Heroku: Update database configuration from $DATABASE_URL.
+# import dj_database_url
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
+
