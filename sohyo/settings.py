@@ -25,7 +25,7 @@ SECRET_KEY = 'k+fl&-1d_2_3l2sb6(md*)rg(kc_p0_^8w6sab(&j07idj&kzs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["174.138.63.83","sohyo.org","www.sohyo.org"]
 
 
 # Application definition

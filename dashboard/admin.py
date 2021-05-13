@@ -61,11 +61,11 @@ class DuserAdmin(UserAdmin):
         'id', 'username', 'phone_number','email', 'first_name', 'last_name',
         'member_type', 'others', 'last_login', 'active')
 
-    list_display_links = ('id',)
+    list_display_links = ('id','username')
     search_fields = ('id',)
     ordering = ('id',)
     readonly_fields = ('password',)
-    list_editable = ('member_type','others')  
+    list_editable = ('phone_number','email', 'first_name', 'last_name', 'member_type',)  
 
 admin.site.register(User, DuserAdmin)
 
