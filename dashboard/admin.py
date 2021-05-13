@@ -65,7 +65,13 @@ class DuserAdmin(UserAdmin):
     search_fields = ('id',)
     ordering = ('id',)
     readonly_fields = ('password',)
+<<<<<<< HEAD
     list_editable = ('phone_number','email', 'first_name', 'last_name', 'member_type',)  
+=======
+    list_editable = (
+        'username', 'phone_number','email', 'first_name', 'last_name',
+        'member_type', 'others')  
+>>>>>>> 392def0ebc1e98ff302b2fe5f58ef09a3ae38ce0
 
 admin.site.register(User, DuserAdmin)
 
